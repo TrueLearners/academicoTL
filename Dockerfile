@@ -72,8 +72,7 @@ RUN php artisan package:discover --ansi \
     && php artisan storage:link || true
 
 # Run as www-data. FrankenPHP may still listen on ports 80 and 443, and Caddy keeps its certificates in /data and /config.
-RUN setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
-    && chown -R www-data:www-data /app/storage /app/bootstrap/cache /data/caddy /config/caddy
+RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache /data/caddy /config/caddy
 
 USER www-data
 
